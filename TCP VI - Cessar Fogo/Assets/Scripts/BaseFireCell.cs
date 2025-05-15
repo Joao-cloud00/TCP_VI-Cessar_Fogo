@@ -27,6 +27,8 @@ public class BaseFireCell : MonoBehaviour
 
     [Header("Visual")]
     [SerializeField] private GameObject visualObject;
+    [SerializeField] private ParticleSystem smokeParticles;
+
 
 
     protected ParticleSystem fireParticles;
@@ -40,6 +42,9 @@ public class BaseFireCell : MonoBehaviour
             rend = visualObject.GetComponent<Renderer>();
         }
         UpdateVisuals();
+        if (smokeParticles != null)
+            smokeParticles.Stop();
+
     }
 
     protected virtual void Update()
@@ -126,6 +131,42 @@ public class BaseFireCell : MonoBehaviour
                 fireParticles.Stop();
             else
                 fireParticles.Play();
+        }
+
+        if (smokeParticles != null)
+        {
+            var main = smokeParticles.main;
+
+            switch (State)
+            {
+                case FireState.Ignition:
+                    main.startColor = new Color(1f, 1f, 1f, 0.6f);
+                    smokeParticles.Play();
+                    break;
+
+                case FireState.Growing:
+                    main.startColor = new Color(1f, 1f, 1f, 1f);
+                    smokeParticles.Play();
+                    break;
+
+                case FireState.FullBurn:
+                    main.startColor = new Color(0.5f, 0.5f, 0.5f, 1f); 
+                    smokeParticles.Play();
+                    break;
+
+                case FireState.Smoldering:
+                    main.startColor = new Color(0.5f, 0.5f, 0.5f, 1f); 
+                    smokeParticles.Play();
+                    break;
+
+                case FireState.Extinguished:
+                    smokeParticles.Stop();
+                    break;
+
+                default:
+                    smokeParticles.Stop();
+                    break;
+            }
         }
 
         if (rend != null)

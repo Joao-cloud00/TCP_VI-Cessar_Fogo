@@ -123,6 +123,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!198 &9975515 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6397255837231853096, guid: f868f39f26503a24f9b82442951a579f,
+    type: 3}
+  m_PrefabInstance: {fileID: 5509791928280819268}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &56792607 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1716281975888303980, guid: 91f5d79d4a862bc4bb16391c01eed753,
+    type: 3}
+  m_PrefabInstance: {fileID: 364767422}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,6 +280,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1925153265329629309, guid: 91f5d79d4a862bc4bb16391c01eed753,
+        type: 3}
+      propertyPath: smokeParticles
+      value: 
+      objectReference: {fileID: 56792607}
     - target: {fileID: 2514485668677337734, guid: 91f5d79d4a862bc4bb16391c01eed753,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -660,6 +677,11 @@ PrefabInstance:
       propertyPath: visualObject
       value: 
       objectReference: {fileID: 1127126790}
+    - target: {fileID: 2401522360254063208, guid: f868f39f26503a24f9b82442951a579f,
+        type: 3}
+      propertyPath: smokeParticles
+      value: 
+      objectReference: {fileID: 9975515}
     - target: {fileID: 2401522360254063208, guid: f868f39f26503a24f9b82442951a579f,
         type: 3}
       propertyPath: propagationRadius
