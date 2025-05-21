@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum FireState
 {
-    None, Ignition, Growing, FullBurn, Smoldering, Extinguished
+    None, Ignition, Growing, FullBurn, Smoldering, Suppressed, Extinguished
 }
 
 public class BaseFireCell : MonoBehaviour
@@ -29,6 +29,11 @@ public class BaseFireCell : MonoBehaviour
     [SerializeField] private GameObject visualObject;
     [SerializeField] private ParticleSystem smokeParticles;
 
+    [Header("Combustível")]
+    [SerializeField] protected float combustivelMaximo = 100f;
+    protected float combustivelAtual;
+
+
 
 
     protected ParticleSystem fireParticles;
@@ -36,6 +41,7 @@ public class BaseFireCell : MonoBehaviour
 
     protected virtual void Start()
     {
+        combustivelAtual = combustivelMaximo;
         fireParticles = GetComponentInChildren<ParticleSystem>();
         if (visualObject != null)
         {
@@ -52,40 +58,59 @@ public class BaseFireCell : MonoBehaviour
         if (State == FireState.None || State == FireState.Extinguished) return;
 
         timer += Time.deltaTime;
+        //Debug.Log("Combustivel atual: "+combustivelAtual);
 
         switch (State)
         {
             case FireState.Ignition:
-                if (timer >= ignitionTime)
+                combustivelAtual -= Time.deltaTime * 2f; // consumo de combustivel
+                if (combustivelAtual <= 0f)
+                    ChangeState(FireState.Extinguished);
+                else if (timer >= ignitionTime)
                     ChangeState(FireState.Growing);
                 break;
 
+
             case FireState.Growing:
-                if (timer >= growTime)
+                combustivelAtual -= Time.deltaTime * 3f;
+                if (combustivelAtual <= 0f)
+                    ChangeState(FireState.Extinguished);
+                else if (timer >= growTime)
                     ChangeState(FireState.FullBurn);
                 break;
 
             case FireState.FullBurn:
-                if (timer >= fullBurnTime)
-                    ChangeState(FireState.Smoldering);
-
-                if (!hasPropagated && timer >= propagationDelay)
+                combustivelAtual -= Time.deltaTime * 5f;
+                if (combustivelAtual <= 0f)
+                    ChangeState(FireState.Extinguished);
+                else if (!hasPropagated && timer >= propagationDelay)
                 {
                     TryPropagate();
                     hasPropagated = true;
                 }
+                else if (timer >= fullBurnTime)
+                    ChangeState(FireState.Smoldering);
                 break;
 
             case FireState.Smoldering:
-                if (timer >= smolderTime)
+                combustivelAtual -= Time.deltaTime * 2f;
+                if (combustivelAtual <= 0f)
                     ChangeState(FireState.Extinguished);
+                else if (timer >= smolderTime)
+                    ChangeState(FireState.Extinguished);
+                combustivelAtual = 0f;
                 break;
+        }
+
+        if (combustivelAtual <= 0f && State != FireState.Extinguished)
+        {
+            ChangeState(FireState.Extinguished);
         }
     }
 
     public virtual void Ignite()
     {
-        if (State == FireState.None)
+        if ((State == FireState.None || State == FireState.Suppressed) && combustivelAtual > 0f)
         {
             ChangeState(FireState.Ignition);
         }
@@ -93,9 +118,9 @@ public class BaseFireCell : MonoBehaviour
 
     public virtual void Extinguish()
     {
-        if (State != FireState.Extinguished)
+        if (State != FireState.Extinguished && State != FireState.None && combustivelAtual >0f)
         {
-            ChangeState(FireState.Extinguished);
+            ChangeState(FireState.Suppressed);
         }
     }
 
@@ -112,7 +137,7 @@ public class BaseFireCell : MonoBehaviour
         foreach (Collider hit in hits)
         {
             BaseFireCell neighbor = hit.GetComponent<BaseFireCell>();
-            if (neighbor != null && neighbor != this && neighbor.State == FireState.None)
+            if (neighbor != null && neighbor != this && neighbor.PodeSerReacendido())
             {
                 if (Random.value < propagationChance)
                 {
@@ -159,6 +184,12 @@ public class BaseFireCell : MonoBehaviour
                     smokeParticles.Play();
                     break;
 
+                case FireState.Suppressed:
+                    if (fireParticles != null) fireParticles.Stop();
+                    if (smokeParticles != null) smokeParticles.Stop();
+                    rend.material.color = new Color(0.2f, 0.2f, 0.2f);
+                    break;
+
                 case FireState.Extinguished:
                     smokeParticles.Stop();
                     break;
@@ -202,6 +233,16 @@ public class BaseFireCell : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, propagationRadius);
         }
+    }
+
+    public bool PodeSerReacendido()
+    {
+        return (State == FireState.None || State == FireState.Suppressed) && combustivelAtual > 0f;
+    }
+
+    public virtual bool PodeReceberPropagacao()
+    {
+        return (State == FireState.None || State == FireState.Suppressed) && combustivelAtual > 0f;
     }
 }
 

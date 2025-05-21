@@ -6,9 +6,12 @@ public class Tree_FireCell : BaseFireCell
 {
     protected override void Start()
     {
-        //propagationRadius = 7f;
-        //propagationChance = 0.75f;
         base.Start();
+    }
+
+    protected override void Update()
+    {
+        base.Update(); //Debug.Log("Combustivel atual: " + combustivelAtual);
     }
 }
 

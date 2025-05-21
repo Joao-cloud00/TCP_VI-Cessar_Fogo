@@ -14,5 +14,14 @@ public class FireTester : MonoBehaviour
                 fire.Ignite();
             }
         }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            BaseFireCell fire = GetComponent<BaseFireCell>();
+            if (fire != null)
+            {
+                fire.Extinguish();
+            }
+        }
+
     }
 }

@@ -3,15 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - buraco
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - buraco
   - Water
   - UI
-  - 
+  - inflamavel
   - 
   - 
   - 
