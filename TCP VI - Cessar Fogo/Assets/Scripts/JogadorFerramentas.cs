@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class JogadorFerramentas : MonoBehaviour
 {
     [SerializeField] private GameObject ferramentaAtual;
 
-    void Update()
+    public void OnUseTool(InputAction.CallbackContext context)
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (context.performed)
         {
             IFerramenta ferramenta = ferramentaAtual?.GetComponent<IFerramenta>();
             ferramenta?.Usar();
@@ -20,4 +21,5 @@ public class JogadorFerramentas : MonoBehaviour
         ferramentaAtual = novaFerramenta;
     }
 }
+
 
