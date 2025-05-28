@@ -244,6 +244,28 @@ public class BaseFireCell : MonoBehaviour
     {
         return (State == FireState.None || State == FireState.Suppressed) && combustivelAtual > 0f;
     }
+
+    public virtual void Resfriar(float quantidade)
+    {
+        if (State == FireState.Extinguished || combustivelAtual <= 0f)
+            return;
+
+        combustivelAtual -= quantidade;
+
+        if (combustivelAtual <= 0f)
+        {
+            ChangeState(FireState.Extinguished); // fogo acaba naturalmente
+            return;
+        }
+
+        // Se está pegando fogo, pode ser apagado antes do fim
+        if (State != FireState.None && State != FireState.Suppressed)
+        {
+            ChangeState(FireState.None); // volta ao estado original, mas ainda com combustível restante
+            hasPropagated = false; // permite que propague novamente no futuro
+        }
+    }
+
 }
 
 

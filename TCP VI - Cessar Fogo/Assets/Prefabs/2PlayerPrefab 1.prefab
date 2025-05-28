@@ -321,9 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd6012f5dc23e7c4ca9643315ca4f036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
-  _jumpSpeed: 8
-  _gravity: 20000
+  moveSpeed: 5
 --- !u!143 &6496133093570268253
 CharacterController:
   m_ObjectHideFlags: 0
@@ -377,7 +375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 5c0a467bcac680c49abe8af4d022614e,
     type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -390,7 +388,19 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7829306955657144020}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 8bc8bafa-d3dc-4413-b7d3-a7763f54c092
     m_ActionName: Gameplay/Move
   - m_PersistentCalls:
@@ -398,7 +408,19 @@ MonoBehaviour:
     m_ActionId: 189d03d3-4c0f-4ad9-a764-343ad21df0c9
     m_ActionName: Gameplay/Look
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4166513898969561464}
+        m_TargetAssemblyTypeName: JogadorFerramentas, Assembly-CSharp
+        m_MethodName: OnUseTool
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: afb988a7-c224-48ab-ae72-9d52272dea6e
     m_ActionName: Gameplay/UseTool
   m_NeverAutoSwitchControlSchemes: 0
