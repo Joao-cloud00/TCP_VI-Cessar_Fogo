@@ -366,7 +366,7 @@ PrefabInstance:
     - target: {fileID: 1925153265329629309, guid: 91f5d79d4a862bc4bb16391c01eed753,
         type: 3}
       propertyPath: propagationRadius
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2514485668677337734, guid: 91f5d79d4a862bc4bb16391c01eed753,
         type: 3}
@@ -893,7 +893,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1Prefab: {fileID: 7930835424021317259, guid: 282aae96e3fb1ba4cb71d4647a8f19c2,
     type: 3}
-  player2Prefab: {fileID: 7930835424021317259, guid: 02042d9156afcd541aeed75d3ec9717a,
+  player2Prefab: {fileID: 7930835424021317259, guid: b6a446ce89f51e34a8cc1b6dfc856cf7,
     type: 3}
   spawnPoint1: {fileID: 634996883}
   spawnPoint2: {fileID: 870737279}
@@ -1350,6 +1350,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  rotacaoVelocidade: 10
+  cameraTransform: {fileID: 0}
 --- !u!143 &1980327537
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1679,7 +1681,7 @@ PrefabInstance:
     - target: {fileID: 1012015741132531861, guid: eacc6622cd8d57345a35dbef5fc3313b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.14
+      value: -0.61
       objectReference: {fileID: 0}
     - target: {fileID: 1012015741132531861, guid: eacc6622cd8d57345a35dbef5fc3313b,
         type: 3}

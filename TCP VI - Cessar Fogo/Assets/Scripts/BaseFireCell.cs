@@ -58,7 +58,7 @@ public class BaseFireCell : MonoBehaviour
         if (State == FireState.None || State == FireState.Extinguished) return;
 
         timer += Time.deltaTime;
-        //Debug.Log("Combustivel atual: "+combustivelAtual);
+        Debug.Log("Combustivel atual: "+combustivelAtual);
 
         switch (State)
         {
