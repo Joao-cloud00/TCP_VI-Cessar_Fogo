@@ -33,6 +33,8 @@ public class BaseFireCell : MonoBehaviour
     [SerializeField] protected float combustivelMaximo = 100f;
     protected float combustivelAtual;
 
+    protected float mult = 1;
+
 
 
 
@@ -56,9 +58,25 @@ public class BaseFireCell : MonoBehaviour
     protected virtual void Update()
     {
         if (State == FireState.None || State == FireState.Extinguished) return;
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            if (mult <= 1)
+            {
+                mult = 1;
+            }
+            else
+            {
+                mult = mult - 0.5f;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            mult = mult + 0.5f;
+        }
 
-        timer += Time.deltaTime;
-        Debug.Log("Combustivel atual: "+combustivelAtual);
+        timer += (mult * Time.deltaTime);
+        Debug.Log("multiplicador atual: " +mult);
+        //Debug.Log("Combustivel atual: "+combustivelAtual);
 
         switch (State)
         {
@@ -142,7 +160,7 @@ public class BaseFireCell : MonoBehaviour
                 if (Random.value < propagationChance)
                 {
                     neighbor.Ignite();
-                    Debug.Log($"{name} propagou para {neighbor.name}");
+                    //Debug.Log($"{name} propagou para {neighbor.name}");
                 }
             }
         }

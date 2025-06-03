@@ -12,7 +12,7 @@ public class ColetavelFerramenta : MonoBehaviour
         if (jogador != null)
         {
             jogador.EquiparNovaFerramenta(ferramentaPrefab);
-            Destroy(gameObject); // Remove a ferramenta do cenário após pegar
+            //Destroy(gameObject); // Remove a ferramenta do cenário após pegar
         }
     }
 }
