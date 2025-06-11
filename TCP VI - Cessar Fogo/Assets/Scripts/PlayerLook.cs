@@ -12,12 +12,12 @@ public class PlayerLook : MonoBehaviour
 
     public void OnLook(InputAction.CallbackContext context)
     {
-        Debug.Log("input");
+        //Debug.Log("input");
         Vector2 input = context.ReadValue<Vector2>();
 
         if (freeLookCamera != null)
         {
-            Debug.Log("Entrou no IF");
+            //Debug.Log("Entrou no IF");
             freeLookCamera.m_XAxis.Value += input.x * sensibilidadeX * Time.deltaTime;
             freeLookCamera.m_YAxis.Value += input.y * sensibilidadeY * Time.deltaTime;
         }

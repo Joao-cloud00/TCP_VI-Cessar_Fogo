@@ -151,7 +151,14 @@ public class BaseFireCell : MonoBehaviour
 
     protected virtual void TryPropagate()
     {
-        Collider[] hits = Physics.OverlapSphere(transform.position, propagationRadius);
+        Vector3 centro = transform.position;
+
+        if (WindManager.instancia != null && WindManager.instancia.ventoAtivo)
+        {
+            centro += WindManager.instancia.ObterDirecaoComIntensidade() * propagationRadius * 0.5f;
+        }
+
+        Collider[] hits = Physics.OverlapSphere(centro, propagationRadius);
         foreach (Collider hit in hits)
         {
             BaseFireCell neighbor = hit.GetComponent<BaseFireCell>();
