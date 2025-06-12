@@ -5,8 +5,15 @@ using UnityEngine;
 public class MochilaAgua : MonoBehaviour, IFerramenta
 {
     [SerializeField] private ParticleSystem jatoDeAgua;
+    [SerializeField] private GameObject jatoArea;
 
     private bool usando = false;
+
+    private void Start()
+    {
+        if (jatoArea != null)
+            jatoArea.SetActive(false);
+    }
 
     public void Usar()
     {
@@ -14,6 +21,8 @@ public class MochilaAgua : MonoBehaviour, IFerramenta
         if (jatoDeAgua != null && !jatoDeAgua.isPlaying)
         {
             jatoDeAgua.Play();
+            if (jatoArea != null)
+                jatoArea.SetActive(true);
         }
     }
 
@@ -23,6 +32,8 @@ public class MochilaAgua : MonoBehaviour, IFerramenta
         if (jatoDeAgua != null && jatoDeAgua.isPlaying)
         {
             jatoDeAgua.Stop();
+            if (jatoArea != null)
+                jatoArea.SetActive(false);
         }
     }
 
