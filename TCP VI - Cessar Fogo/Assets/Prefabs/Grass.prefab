@@ -5074,6 +5074,7 @@ GameObject:
   - component: {fileID: 6256572728541067457}
   - component: {fileID: 5504576028003537843}
   - component: {fileID: 7831371290085385174}
+  - component: {fileID: 5718511660577536771}
   m_Layer: 6
   m_Name: Grass
   m_TagString: Untagged
@@ -5159,8 +5160,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.8338859, y: 0.86376363, z: 1}
+  m_Center: {x: -0.034309477, y: 0.06811831, z: 0}
 --- !u!54 &6256572728541067457
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5210,6 +5211,7 @@ MonoBehaviour:
   visualObject: {fileID: 750172343725863818}
   smokeParticles: {fileID: 9163847079823471881}
   combustivelMaximo: 100
+  areaDano: {fileID: 5718511660577536771}
   buracoPrefab: {fileID: 5526389210144713334, guid: 56d626fd1f53ec14582006a73ed0655e,
     type: 3}
 --- !u!114 &7831371290085385174
@@ -5224,6 +5226,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a38df51c4bfb104880ad3970c54fc8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &5718511660577536771
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5947812124600773938}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6995803445708832312
 GameObject:
   m_ObjectHideFlags: 0

@@ -14754,6 +14754,7 @@ GameObject:
   - component: {fileID: 6796622500558064537}
   - component: {fileID: 4170282384673546539}
   - component: {fileID: 1925153265329629309}
+  - component: {fileID: 6434023231273745771}
   m_Layer: 0
   m_Name: Tree 1
   m_TagString: Untagged
@@ -14890,3 +14891,25 @@ MonoBehaviour:
   visualObject: {fileID: 5305955542784699662}
   smokeParticles: {fileID: 0}
   combustivelMaximo: 100
+  areaDano: {fileID: 6434023231273745771}
+--- !u!135 &6434023231273745771
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8854971903644472648}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Radius: 4
+  m_Center: {x: 0, y: 0, z: 0}

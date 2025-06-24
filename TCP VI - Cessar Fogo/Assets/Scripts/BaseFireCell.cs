@@ -33,6 +33,9 @@ public class BaseFireCell : MonoBehaviour
     [SerializeField] protected float combustivelMaximo = 100f;
     protected float combustivelAtual;
 
+    [Header("Area de Dano")]
+    [SerializeField] private Collider areaDano;
+
     protected float mult = 1;
 
 
@@ -75,7 +78,7 @@ public class BaseFireCell : MonoBehaviour
         }
 
         timer += (mult * Time.deltaTime);
-        Debug.Log("multiplicador atual: " +mult);
+        //Debug.Log("multiplicador atual: " +mult);
         //Debug.Log("Combustivel atual: "+combustivelAtual);
 
         switch (State)
@@ -118,12 +121,16 @@ public class BaseFireCell : MonoBehaviour
                     ChangeState(FireState.Extinguished);
                 combustivelAtual = 0f;
                 break;
+
         }
 
         if (combustivelAtual <= 0f && State != FireState.Extinguished)
         {
             ChangeState(FireState.Extinguished);
         }
+
+        Debug.Log($"{gameObject.name} mudou para estado {State}. Collider de dano ativo? {areaDano.enabled}");
+
     }
 
     public virtual void Ignite()
@@ -146,6 +153,7 @@ public class BaseFireCell : MonoBehaviour
     {
         State = newState;
         timer = 0f;
+        AtualizarColliderDano();
         UpdateVisuals();
     }
 
@@ -290,6 +298,43 @@ public class BaseFireCell : MonoBehaviour
             hasPropagated = false; // permite que propague novamente no futuro
         }
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        JogadorVida jogador = other.GetComponent<JogadorVida>();
+        if (jogador != null)
+        {
+            jogador.ReceberDano(1); // 1 de dano por frame em contato
+        }
+    }
+    private void AtualizarColliderDano()
+    {
+        if (areaDano == null) return;
+
+        bool ativo = false;
+
+        switch (State)
+        {
+            case FireState.Ignition:
+            case FireState.Growing:
+            case FireState.FullBurn:
+            case FireState.Smoldering:
+                ativo = true;
+                break;
+
+            case FireState.None:
+            case FireState.Extinguished:
+            case FireState.Suppressed:
+            default:
+                ativo = false;
+                break;
+        }
+
+        areaDano.enabled = ativo;
+    }
+
+
+
 
 }
 

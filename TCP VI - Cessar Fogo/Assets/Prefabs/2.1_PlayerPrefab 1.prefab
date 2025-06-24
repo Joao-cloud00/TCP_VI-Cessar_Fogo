@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703555225374169693}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.17281513, y: -0.000000008473751, z: 0.0000000014867614, w: 0.9849543}
+  m_LocalRotation: {x: 0.17281513, y: 0.000000008473751, z: -0.0000000014867614, w: 0.9849543}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -464,7 +464,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3140811116476141908}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.17281516, y: -0.000000016947501, z: 0.0000000029735234, w: 0.9849543}
+  m_LocalRotation: {x: 0.17281516, y: 0.000000016947501, z: -0.0000000029735234, w: 0.9849543}
   m_LocalPosition: {x: 0, y: 1.5, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -510,7 +510,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1769
+    m_Bits: 1897
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1163,10 +1163,10 @@ GameObject:
   - component: {fileID: 4166513898969561464}
   - component: {fileID: -2623637418304301744}
   - component: {fileID: 7968887422283233452}
-  - component: {fileID: 441602540264129909}
+  - component: {fileID: 6382303814534248232}
   - component: {fileID: 7729497099495141560}
   m_Layer: 0
-  m_Name: 1PlayerPrefab
+  m_Name: 2.1_PlayerPrefab 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1222,7 +1222,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f3d4b05ee58a5314582cbb33c0cfd2ca, type: 2}
+  - {fileID: 2100000, guid: 051861045352e3a47b2120bcc49b35af, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1483,7 +1483,7 @@ MonoBehaviour:
   freeLookCamera: {fileID: 4498098532499965317}
   sensibilidadeX: 85
   sensibilidadeY: 0.5
---- !u!114 &441602540264129909
+--- !u!114 &6382303814534248232
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1492,7 +1492,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7930835424021317259}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d427a2412175fc4488e75c907707c3d, type: 3}
+  m_Script: {fileID: 11500000, guid: 269603bf2b3fbab42b99b2cc526f1c02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &7729497099495141560
@@ -1521,7 +1521,7 @@ GameObject:
   - component: {fileID: 469183997819222343}
   - component: {fileID: 4498098532499965317}
   m_Layer: 7
-  m_Name: Player1Camera
+  m_Name: Player2Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
