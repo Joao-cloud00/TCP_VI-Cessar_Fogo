@@ -304,7 +304,7 @@ public class BaseFireCell : MonoBehaviour
         JogadorVida jogador = other.GetComponent<JogadorVida>();
         if (jogador != null)
         {
-            jogador.ReceberDano(1); // 1 de dano por frame em contato
+            jogador.ReceberDano(5); // 1 de dano por segundo em contato
         }
     }
     private void AtualizarColliderDano()

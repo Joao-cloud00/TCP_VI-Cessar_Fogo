@@ -25,11 +25,16 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
 
     private bool isRunning = false;
-    [SerializeField] private bool isGrounded = false;
+    private bool isGrounded = false;
+    [SerializeField] private float custoPulo = 15f;
+    [SerializeField] private float custoCorrida = 5f;
+    private JogadorEnergia energia;
+
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        energia = GetComponent<JogadorEnergia>();
 
         if (groundCheck == null)
         {
@@ -50,15 +55,21 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnRun(InputAction.CallbackContext context)
     {
-        isRunning = context.ReadValueAsButton();
+        if (energia.TemEnergia(custoPulo))
+        {
+            isRunning = context.ReadValueAsButton();
+            energia.ConsumirEnergia(custoCorrida);
+        }
+        
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
         Debug.Log("pulou");
-        if (context.performed && isGrounded)
+        if (context.performed && isGrounded && energia.TemEnergia(custoPulo))
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            energia.ConsumirEnergia(custoPulo);
         }
     }
 

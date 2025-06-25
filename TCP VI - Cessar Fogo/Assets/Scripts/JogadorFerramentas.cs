@@ -8,23 +8,36 @@ public class JogadorFerramentas : MonoBehaviour
     [SerializeField] private GameObject ferramentaAtual;
     public Transform pontoFerramenta;
 
+    [SerializeField] private float custoFerramenta = 99f;
+    private JogadorEnergia energia;
+
+    private void Awake()
+    {
+        energia = GetComponent<JogadorEnergia>();
+    }
+
     public void OnUseTool(InputAction.CallbackContext context)
     {
-        if (ferramentaAtual == null) return;
-
-        IFerramenta ferramenta = ferramentaAtual.GetComponent<IFerramenta>();
-        if (ferramenta == null) return;
-
-        if (context.started)
+        if (energia.TemEnergia(custoFerramenta))
         {
-            ferramenta.Usar();
-        }
-        else if (context.canceled)
-        {
-            // Só chama PararUso se a ferramenta implementar esse método
-            if (ferramenta is MochilaAgua mochila)
+            if (ferramentaAtual == null) return;
+
+            IFerramenta ferramenta = ferramentaAtual.GetComponent<IFerramenta>();
+            if (ferramenta == null) return;
+
+
+            if (context.started)
             {
-                mochila.PararUso();
+                ferramenta.Usar();
+                energia.ConsumirEnergia(custoFerramenta);
+            }
+            else if (context.canceled)
+            {
+                // Só chama PararUso se a ferramenta implementar esse método
+                if (ferramenta is MochilaAgua mochila)
+                {
+                    mochila.PararUso();
+                }
             }
         }
     }
