@@ -10,6 +10,7 @@ public class PlayerLook : MonoBehaviour
     [SerializeField] private float sensibilidadeX = 5f;
     [SerializeField] private float sensibilidadeY = 2f;
 
+
     public void OnLook(InputAction.CallbackContext context)
     {
         //Debug.Log("input");

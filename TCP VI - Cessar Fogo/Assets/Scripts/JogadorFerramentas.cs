@@ -10,6 +10,12 @@ public class JogadorFerramentas : MonoBehaviour
 
     [SerializeField] private float custoFerramenta = 99f;
     private JogadorEnergia energia;
+    private bool controleAtivo = true;
+
+    public void SetControleAtivo(bool ativo)
+    {
+        controleAtivo = ativo;
+    }
 
     private void Awake()
     {
@@ -18,6 +24,8 @@ public class JogadorFerramentas : MonoBehaviour
 
     public void OnUseTool(InputAction.CallbackContext context)
     {
+        if (!controleAtivo) return;
+
         if (energia.TemEnergia(custoFerramenta))
         {
             if (ferramentaAtual == null) return;

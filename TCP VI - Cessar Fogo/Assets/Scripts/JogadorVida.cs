@@ -36,7 +36,7 @@ public class JogadorVida : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(vidaAtual);
+        //Debug.Log(vidaAtual);
     }
 
     private void AtualizarBarraVida()

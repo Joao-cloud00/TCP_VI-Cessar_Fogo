@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEditor.Experimental.GraphView.GraphView;
@@ -20,6 +21,11 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Referências")]
     [SerializeField] private Transform cameraTransform; // arraste a câmera real do jogador aqui
+    
+    public TorreCameraController torreCamera; // arraste no Inspector
+    public TorreCameraController torreController;
+
+    public bool estaProximoDaTorre = false;
 
     private Vector2 moveInput;
     private Rigidbody rb;
@@ -30,6 +36,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float custoCorrida = 5f;
     private JogadorEnergia energia;
 
+    private bool controleAtivo = true;
+
+    public void SetControleAtivo(bool ativo)
+    {
+        controleAtivo = ativo;
+    }
 
     private void Awake()
     {
@@ -50,11 +62,15 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (!controleAtivo) return;
+
         moveInput = context.ReadValue<Vector2>();
     }
 
     public void OnRun(InputAction.CallbackContext context)
     {
+        if (!controleAtivo) return;
+
         if (energia.TemEnergia(custoPulo))
         {
             isRunning = context.ReadValueAsButton();
@@ -65,11 +81,48 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        Debug.Log("pulou");
+        //Debug.Log("pulou");
+        if (!controleAtivo) return;
+
         if (context.performed && isGrounded && energia.TemEnergia(custoPulo))
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             energia.ConsumirEnergia(custoPulo);
+        }
+    }
+
+    
+
+    public void OnMoverCameraTorre(InputAction.CallbackContext context)
+    {
+        if (torreController != null && torreController.EstaAtiva())
+        {
+            torreController.ReceberInput(context.ReadValue<Vector2>());
+        }
+    }
+
+
+    public void OnToggleTorreCamera(InputAction.CallbackContext context)
+    {
+        
+        if (!context.performed) return;
+
+        Debug.Log("Botão Triângulo pressionado");
+
+        if (estaProximoDaTorre)
+        {
+            Debug.Log("Está próximo da torre, alternando câmera");
+            if (torreCamera.EstaAtiva())
+            {
+                torreCamera.DesativarCamera();
+                SetControleAtivo(true);
+                //Debug.Log("Usando camera");
+            }
+            else
+            {
+                torreCamera.AtivarCamera();
+                SetControleAtivo(false);
+            }
         }
     }
 
@@ -80,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
         if (moveInput.sqrMagnitude > 0.01f)
         {
             float speed = moveSpeed * (isRunning ? runMultiplier : 1f);
-            Debug.Log($"velocidade atual: {speed} ");
+            //Debug.Log($"velocidade atual: {speed} ");
 
             Vector3 inputDirection = new Vector3(moveInput.x, 0f, moveInput.y);
             Vector3 worldDirection = cameraTransform.TransformDirection(inputDirection);
