@@ -107,11 +107,11 @@ public class PlayerMovement : MonoBehaviour
         
         if (!context.performed) return;
 
-        Debug.Log("Botão Triângulo pressionado");
+        //Debug.Log("Botão Triângulo pressionado");
 
         if (estaProximoDaTorre)
         {
-            Debug.Log("Está próximo da torre, alternando câmera");
+            //Debug.Log("Está próximo da torre, alternando câmera");
             if (torreCamera.EstaAtiva())
             {
                 torreCamera.DesativarCamera();

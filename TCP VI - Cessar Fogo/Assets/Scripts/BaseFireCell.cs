@@ -37,6 +37,8 @@ public class BaseFireCell : MonoBehaviour
     [SerializeField] private Collider areaDano;
 
     protected float mult = 1;
+    private bool focoContabilizado = false;
+
 
 
 
@@ -46,6 +48,8 @@ public class BaseFireCell : MonoBehaviour
 
     protected virtual void Start()
     {
+        //GameManager.Instance?.RegistrarFoco();
+
         combustivelAtual = combustivelMaximo;
         fireParticles = GetComponentInChildren<ParticleSystem>();
         if (visualObject != null)
@@ -117,24 +121,34 @@ public class BaseFireCell : MonoBehaviour
                 combustivelAtual -= Time.deltaTime * 2f;
                 if (combustivelAtual <= 0f)
                     ChangeState(FireState.Extinguished);
-                else if (timer >= smolderTime)
+                else if (timer >= smolderTime)               
                     ChangeState(FireState.Extinguished);
                 combustivelAtual = 0f;
                 break;
 
         }
 
+        if (!focoContabilizado && (State == FireState.Suppressed || State == FireState.Extinguished))
+        {
+            GameManager.Instance?.FocoExtinto();
+            focoContabilizado = true;
+        }
+
+
         if (combustivelAtual <= 0f && State != FireState.Extinguished)
         {
             ChangeState(FireState.Extinguished);
         }
 
-        Debug.Log($"{gameObject.name} mudou para estado {State}. Collider de dano ativo? {areaDano.enabled}");
+        //Debug.Log($"{gameObject.name} mudou para estado {State}. Collider de dano ativo? {areaDano.enabled}");
 
     }
 
     public virtual void Ignite()
     {
+        GameManager.Instance?.RegistrarFoco();
+        Debug.Log($"{name} registrou foco no GameManager");
+
         if ((State == FireState.None || State == FireState.Suppressed) && combustivelAtual > 0f)
         {
             ChangeState(FireState.Ignition);
@@ -294,7 +308,7 @@ public class BaseFireCell : MonoBehaviour
         // Se está pegando fogo, pode ser apagado antes do fim
         if (State != FireState.None && State != FireState.Suppressed)
         {
-            ChangeState(FireState.None); // volta ao estado original, mas ainda com combustível restante
+            ChangeState(FireState.Suppressed); // volta ao estado original, mas ainda com combustível restante
             hasPropagated = false; // permite que propague novamente no futuro
         }
     }
@@ -304,7 +318,7 @@ public class BaseFireCell : MonoBehaviour
         JogadorVida jogador = other.GetComponent<JogadorVida>();
         if (jogador != null)
         {
-            jogador.ReceberDano(5); // 1 de dano por segundo em contato
+            jogador.ReceberDano(11); // dano por segundo em contato
         }
     }
     private void AtualizarColliderDano()

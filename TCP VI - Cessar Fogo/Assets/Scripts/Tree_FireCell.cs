@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Tree_FireCell : BaseFireCell
 {
-    protected override void Start()
-    {
-        base.Start();
-    }
+    //protected override void Start()
+    //{
+    //    base.Start();
+    //}
 
-    protected override void Update()
-    {
-        base.Update(); //Debug.Log("Combustivel atual: " + combustivelAtual);
-    }
+    //protected override void Update()
+    //{
+    //    base.Update(); //Debug.Log("Combustivel atual: " + combustivelAtual);
+    //}
 }
 

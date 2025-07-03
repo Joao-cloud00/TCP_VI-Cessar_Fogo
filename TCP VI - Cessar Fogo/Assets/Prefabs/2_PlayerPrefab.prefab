@@ -1622,7 +1622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ferramentaAtual: {fileID: 0}
   pontoFerramenta: {fileID: 1183679604230157593}
-  custoFerramenta: 99
+  custoFerramenta: 25
 --- !u!114 &-2623637418304301744
 MonoBehaviour:
   m_ObjectHideFlags: 0

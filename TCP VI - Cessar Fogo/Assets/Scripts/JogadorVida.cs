@@ -48,7 +48,7 @@ public class JogadorVida : MonoBehaviour
 
     public void ReceberDano(int quantidade)
     {
-        if (!podeTomarDano || vidaAtual <= 0)
+        if (!podeTomarDano) //|| vidaAtual <= 0)
             return;
 
         vidaAtual -= quantidade;
@@ -56,6 +56,7 @@ public class JogadorVida : MonoBehaviour
         if (vidaAtual <= 0)
         {
             Morrer();
+            Debug.Log("Jogador Morreu");
         }
         else
         {
@@ -92,8 +93,9 @@ public class JogadorVida : MonoBehaviour
     private void Morrer()
     {
         Debug.Log($"{name} morreu!");
-        vidaAtual = 0;
+        //vidaAtual = 0;
         AtualizarBarraVida();
+        GameManager.Instance.Derrota();
 
         // adicionar aqui o que acontecer quando morrer (respawn, game over, etc.)
     }
