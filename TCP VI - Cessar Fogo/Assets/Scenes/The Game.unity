@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 1437668755}
   - component: {fileID: 1437668754}
   - component: {fileID: 1437668753}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,7 +363,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 52fd4181da1e4574fa08528d22947e1c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 250
+      value: 253.54
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 52fd4181da1e4574fa08528d22947e1c,
         type: 3}
@@ -373,12 +373,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 52fd4181da1e4574fa08528d22947e1c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 250
+      value: 255.89
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 52fd4181da1e4574fa08528d22947e1c,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.93261325
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 52fd4181da1e4574fa08528d22947e1c,
         type: 3}
@@ -388,7 +388,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 52fd4181da1e4574fa08528d22947e1c,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.3608773
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 52fd4181da1e4574fa08528d22947e1c,
         type: 3}
@@ -403,7 +403,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 52fd4181da1e4574fa08528d22947e1c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -42.308
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 52fd4181da1e4574fa08528d22947e1c,
         type: 3}
