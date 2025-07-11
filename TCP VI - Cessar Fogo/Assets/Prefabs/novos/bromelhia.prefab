@@ -14648,7 +14648,7 @@ GameObject:
   - component: {fileID: 4170282384673546539}
   - component: {fileID: 1925153265329629309}
   m_Layer: 0
-  m_Name: heliconias
+  m_Name: bromelhia
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14664,11 +14664,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.4, y: -1.53, z: -0.18}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1844465011182124137}
-  - {fileID: 2101291252456125321}
+  - {fileID: 5044332666169320530}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &5846325279496564708
@@ -14784,7 +14784,7 @@ MonoBehaviour:
   smokeParticles: {fileID: 0}
   combustivelMaximo: 100
   areaDano: {fileID: 0}
---- !u!1001 &1821155637057890800
+--- !u!1001 &6573658165538473907
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -14792,69 +14792,69 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2514485668677337734}
     m_Modifications:
-    - target: {fileID: 319546829471570553, guid: 49bcf7f217f9bc147ad92d1d56d9b3a4,
+    - target: {fileID: 2106350439656039393, guid: 4ea9ffcaf7b8b114e803ef256194e548,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 319546829471570553, guid: 49bcf7f217f9bc147ad92d1d56d9b3a4,
+    - target: {fileID: 2106350439656039393, guid: 4ea9ffcaf7b8b114e803ef256194e548,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 319546829471570553, guid: 49bcf7f217f9bc147ad92d1d56d9b3a4,
+    - target: {fileID: 2106350439656039393, guid: 4ea9ffcaf7b8b114e803ef256194e548,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 319546829471570553, guid: 49bcf7f217f9bc147ad92d1d56d9b3a4,
+    - target: {fileID: 2106350439656039393, guid: 4ea9ffcaf7b8b114e803ef256194e548,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 319546829471570553, guid: 49bcf7f217f9bc147ad92d1d56d9b3a4,
+    - target: {fileID: 2106350439656039393, guid: 4ea9ffcaf7b8b114e803ef256194e548,
         type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 319546829471570553, guid: 49bcf7f217f9bc147ad92d1d56d9b3a4,
+    - target: {fileID: 2106350439656039393, guid: 4ea9ffcaf7b8b114e803ef256194e548,
         type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 319546829471570553, guid: 49bcf7f217f9bc147ad92d1d56d9b3a4,
+    - target: {fileID: 2106350439656039393, guid: 4ea9ffcaf7b8b114e803ef256194e548,
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 319546829471570553, guid: 49bcf7f217f9bc147ad92d1d56d9b3a4,
+    - target: {fileID: 2106350439656039393, guid: 4ea9ffcaf7b8b114e803ef256194e548,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 319546829471570553, guid: 49bcf7f217f9bc147ad92d1d56d9b3a4,
+    - target: {fileID: 2106350439656039393, guid: 4ea9ffcaf7b8b114e803ef256194e548,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 319546829471570553, guid: 49bcf7f217f9bc147ad92d1d56d9b3a4,
+    - target: {fileID: 2106350439656039393, guid: 4ea9ffcaf7b8b114e803ef256194e548,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1277447738652057175, guid: 49bcf7f217f9bc147ad92d1d56d9b3a4,
+    - target: {fileID: 6395214900053779535, guid: 4ea9ffcaf7b8b114e803ef256194e548,
         type: 3}
       propertyPath: m_Name
-      value: Heliconias
+      value: bromelia
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 49bcf7f217f9bc147ad92d1d56d9b3a4, type: 3}
---- !u!4 &2101291252456125321 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: 4ea9ffcaf7b8b114e803ef256194e548, type: 3}
+--- !u!4 &5044332666169320530 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 319546829471570553, guid: 49bcf7f217f9bc147ad92d1d56d9b3a4,
+  m_CorrespondingSourceObject: {fileID: 2106350439656039393, guid: 4ea9ffcaf7b8b114e803ef256194e548,
     type: 3}
-  m_PrefabInstance: {fileID: 1821155637057890800}
+  m_PrefabInstance: {fileID: 6573658165538473907}
   m_PrefabAsset: {fileID: 0}
