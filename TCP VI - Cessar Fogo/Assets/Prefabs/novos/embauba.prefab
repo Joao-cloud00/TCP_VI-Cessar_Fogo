@@ -14884,7 +14884,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ignitionTime: 3
   growTime: 5
-  fullBurnTime: 8
+  fullBurnTime: 18
   smolderTime: 4
   propagationRadius: 7
   propagationChance: 0.5
