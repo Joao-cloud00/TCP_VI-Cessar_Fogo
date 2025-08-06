@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Referências")]
     [SerializeField] private Transform cameraTransform; // arraste a câmera real do jogador aqui
-    
+
     public TorreCameraController torreCamera; // arraste no Inspector
     public TorreCameraController torreController;
 
@@ -31,10 +31,14 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
 
     private bool isRunning = false;
+    private bool isWalking = false;
     private bool isGrounded = false;
+    private bool isJumping = false;
+    private bool isFalling;
     [SerializeField] private float custoPulo = 15f;
     [SerializeField] private float custoCorrida = 5f;
     private JogadorEnergia energia;
+    Animator animator;
 
     private bool controleAtivo = true;
 
@@ -47,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         energia = GetComponent<JogadorEnergia>();
+        animator = GetComponent<Animator>();
 
         if (groundCheck == null)
         {
@@ -63,8 +68,8 @@ public class PlayerMovement : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         if (!controleAtivo) return;
-
         moveInput = context.ReadValue<Vector2>();
+        
     }
 
     public void OnRun(InputAction.CallbackContext context)
@@ -73,25 +78,31 @@ public class PlayerMovement : MonoBehaviour
 
         if (energia.TemEnergia(custoPulo))
         {
+
+
             isRunning = context.ReadValueAsButton();
+            animator.SetBool("Correndo", isRunning);
             energia.ConsumirEnergia(custoCorrida);
         }
-        
+
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        //Debug.Log("pulou");
+        Debug.Log("pulou");
         if (!controleAtivo) return;
 
         if (context.performed && isGrounded && energia.TemEnergia(custoPulo))
         {
+
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             energia.ConsumirEnergia(custoPulo);
+            animator.SetTrigger("Pulou");
         }
+
     }
 
-    
+
 
     public void OnMoverCameraTorre(InputAction.CallbackContext context)
     {
@@ -104,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnToggleTorreCamera(InputAction.CallbackContext context)
     {
-        
+
         if (!context.performed) return;
 
         //Debug.Log("Botão Triângulo pressionado");
@@ -130,8 +141,15 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         CheckGround();
+
+
+
+        animator.SetBool("Andando", isWalking);
+
+
         if (moveInput.sqrMagnitude > 0.01f)
         {
+
             float speed = moveSpeed * (isRunning ? runMultiplier : 1f);
             //Debug.Log($"velocidade atual: {speed} ");
 
@@ -142,6 +160,8 @@ public class PlayerMovement : MonoBehaviour
             Vector3 movement = worldDirection.normalized * speed * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + movement);
 
+            isWalking = true;
+
             // Rotaciona o jogador na direção do movimento
             if (worldDirection.sqrMagnitude > 0.01f)
             {
@@ -149,6 +169,7 @@ public class PlayerMovement : MonoBehaviour
                 rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime));
             }
         }
+        else { isWalking = false; }
     }
 
     private void CheckGround()
@@ -156,4 +177,3 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundMask);
     }
 }
-

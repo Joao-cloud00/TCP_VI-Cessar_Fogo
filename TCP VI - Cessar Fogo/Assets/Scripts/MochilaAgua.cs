@@ -6,11 +6,14 @@ public class MochilaAgua : MonoBehaviour, IFerramenta
 {
     [SerializeField] private ParticleSystem jatoDeAgua;
     [SerializeField] private GameObject jatoArea;
+    [SerializeField] private int item;
 
     private bool usando = false;
+    private Animator anim;
 
     private void Start()
     {
+        anim = GetComponentInParent<Animator>();
         if (jatoArea != null)
             jatoArea.SetActive(false);
     }
@@ -24,6 +27,9 @@ public class MochilaAgua : MonoBehaviour, IFerramenta
             if (jatoArea != null)
                 jatoArea.SetActive(true);
         }
+        anim.SetTrigger("Usou");
+
+        anim.SetInteger("Item", item);
     }
 
     public void PararUso()

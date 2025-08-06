@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2269,6 +2269,12 @@ PrefabInstance:
       propertyPath: telaVitoria
       value: 
       objectReference: {fileID: 559865148}
+    - target: {fileID: 6142559398077114832, guid: 1c0e02ab65a42e7449444455f3931043,
+        type: 3}
+      propertyPath: player1Prefab
+      value: 
+      objectReference: {fileID: 7930835424021317259, guid: d0cbe62275e173e4faa5ae85bf904db1,
+        type: 3}
     - target: {fileID: 7748768571691509773, guid: 1c0e02ab65a42e7449444455f3931043,
         type: 3}
       propertyPath: m_Name

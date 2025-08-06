@@ -20,6 +20,7 @@ public class JogadorVida : MonoBehaviour
     [Header("UI")]
     [SerializeField] private Image barraVida;
 
+    Animator animator;
 
 
     //[Header("Som de dano")]
@@ -29,7 +30,7 @@ public class JogadorVida : MonoBehaviour
     {
         vidaAtual = vidaMaxima;
         AtualizarBarraVida();
-
+       animator = GetComponentInParent<Animator>();
         if (telaDano != null)
             telaDano.color = new Color(1, 0, 0, 0);
     }
@@ -52,9 +53,10 @@ public class JogadorVida : MonoBehaviour
             return;
 
         vidaAtual -= quantidade;
-
+        animator.SetTrigger("Hurt");
         if (vidaAtual <= 0)
         {
+
             Morrer();
             Debug.Log("Jogador Morreu");
         }
@@ -95,6 +97,7 @@ public class JogadorVida : MonoBehaviour
         Debug.Log($"{name} morreu!");
         //vidaAtual = 0;
         AtualizarBarraVida();
+        animator.SetTrigger("Morreu");
         GameManager.Instance.Derrota();
 
         // adicionar aqui o que acontecer quando morrer (respawn, game over, etc.)

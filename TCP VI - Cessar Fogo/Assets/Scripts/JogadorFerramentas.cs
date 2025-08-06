@@ -31,7 +31,7 @@ public class JogadorFerramentas : MonoBehaviour
             if (ferramentaAtual == null) return;
 
             IFerramenta ferramenta = ferramentaAtual.GetComponent<IFerramenta>();
-            if (ferramenta == null) return;
+            if (ferramenta == null)  return;
 
 
             if (context.started)
@@ -55,7 +55,8 @@ public class JogadorFerramentas : MonoBehaviour
         if (ferramentaAtual != null)
             Destroy(ferramentaAtual);
 
-        GameObject novaInstancia = Instantiate(novaFerramentaPrefab);
+
+            GameObject novaInstancia = Instantiate(novaFerramentaPrefab);
         Transform pontoDePegada = novaInstancia.transform.Find("PontoDePegada");
 
         if (pontoDePegada == null)
@@ -74,7 +75,8 @@ public class JogadorFerramentas : MonoBehaviour
             novaInstancia.transform.localPosition = -pontoDePegada.localPosition;
             novaInstancia.transform.localRotation = Quaternion.Inverse(pontoDePegada.localRotation);
         }
-
+        Animator animator = GetComponentInParent<Animator>();
+        animator.SetBool("TemFerramenta", true);
         ferramentaAtual = novaInstancia;
     }
 

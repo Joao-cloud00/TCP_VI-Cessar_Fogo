@@ -6,6 +6,7 @@ public class Machado : MonoBehaviour, IFerramenta
 {
     [SerializeField] private GameObject areaDeAtaque;
     [SerializeField] private float tempoAtivo = 0.3f;
+    Animator anim;
 
     private bool podeAtacar = true;
 
@@ -13,6 +14,7 @@ public class Machado : MonoBehaviour, IFerramenta
     {
         if (areaDeAtaque != null)
             areaDeAtaque.SetActive(false);
+        anim = GetComponentInParent<Animator>();
     }
 
     public void Usar()
@@ -26,8 +28,8 @@ public class Machado : MonoBehaviour, IFerramenta
         podeAtacar = false;
 
         //iniciar a animação de ataque
-        //anim.SetTrigger("Atacar");
-
+        anim.SetTrigger("Usou");
+        anim.SetInteger("Item",0);
         if (areaDeAtaque != null)
             areaDeAtaque.SetActive(true);
 

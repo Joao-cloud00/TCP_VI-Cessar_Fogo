@@ -261,6 +261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jatoDeAgua: {fileID: 3989328442665728620}
   jatoArea: {fileID: 8659449590621655061}
+  item: 2
 --- !u!1 &5339369223766708788
 GameObject:
   m_ObjectHideFlags: 0
