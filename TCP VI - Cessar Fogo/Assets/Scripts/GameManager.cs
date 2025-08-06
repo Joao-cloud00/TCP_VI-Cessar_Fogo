@@ -32,6 +32,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 0;
+
         PlayerInputManager.instance.DisableJoining();
 
         var player1 = PlayerInput.Instantiate(player1Prefab, 0, controlScheme: null, pairWithDevice: Gamepad.all[0]);
@@ -44,7 +48,7 @@ public class GameManager : MonoBehaviour
 
         Debug.Log($"Player 2: index = {player2.playerIndex}, controle = {player2.devices[0].displayName}");
 
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
     }
 
     private void Update()
@@ -100,6 +104,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
 }
 
 

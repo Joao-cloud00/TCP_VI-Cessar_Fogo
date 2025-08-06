@@ -64,6 +64,13 @@ public class BaseFireCell : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (!focoContabilizado && (State == FireState.Suppressed || State == FireState.Extinguished))
+        {
+            Debug.Log("Foco extinto");
+            GameManager.Instance?.FocoExtinto();
+            focoContabilizado = true;
+        }
+
         if (State == FireState.None || State == FireState.Extinguished) return;
         if (Input.GetKeyDown(KeyCode.N))
         {
@@ -128,13 +135,6 @@ public class BaseFireCell : MonoBehaviour
 
         }
 
-        if (!focoContabilizado && (State == FireState.Suppressed || State == FireState.Extinguished))
-        {
-            GameManager.Instance?.FocoExtinto();
-            focoContabilizado = true;
-        }
-
-
         if (combustivelAtual <= 0f && State != FireState.Extinguished)
         {
             ChangeState(FireState.Extinguished);
@@ -147,6 +147,7 @@ public class BaseFireCell : MonoBehaviour
     public virtual void Ignite()
     {
         GameManager.Instance?.RegistrarFoco();
+        focoContabilizado = false;
         Debug.Log($"{name} registrou foco no GameManager");
 
         if ((State == FireState.None || State == FireState.Suppressed) && combustivelAtual > 0f)
