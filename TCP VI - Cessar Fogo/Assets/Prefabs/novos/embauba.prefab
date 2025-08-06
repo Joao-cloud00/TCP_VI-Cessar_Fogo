@@ -14841,8 +14841,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1.5928224, z: 1}
+  m_Center: {x: 0, y: 0.29641145, z: 0}
 --- !u!54 &4170282384673546539
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14912,7 +14912,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 3
-  m_Radius: 2.5
+  m_Radius: 2
   m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!33 &-7743907692152877740
 MeshFilter:

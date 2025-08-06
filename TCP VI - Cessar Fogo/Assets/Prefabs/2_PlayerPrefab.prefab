@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703555225374169693}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.17281513, y: 0.000000008473751, z: -0.0000000014867614, w: 0.9849543}
+  m_LocalRotation: {x: 0.1651131, y: 0.000000008485109, z: -0.0000000014204995, w: 0.98627466}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -61,7 +61,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 40
+    FieldOfView: 55
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -315,7 +315,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2003068923804779373}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.19070235, y: -0.000000025631323, z: 0.000000004979335, w: 0.9816479}
+  m_LocalRotation: {x: 0.19070235, y: -0.000000025631325, z: 0.000000004979335, w: 0.9816479}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -351,7 +351,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 40
+    FieldOfView: 55
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -713,7 +713,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3128839099294286170}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1549182, y: -0.000000014721265, z: 0.0000000023084612, w: 0.9879273}
+  m_LocalRotation: {x: 0.1395508, y: 0.000000017038017, z: -0.0000000024011646, w: 0.99021494}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -749,7 +749,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 40
+    FieldOfView: 55
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -795,8 +795,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3140811116476141908}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0.3, y: 7.49, z: 23.06}
+  m_LocalRotation: {x: 0.16511314, y: 0.000000008485111, z: -0.0000000014204999, w: 0.98627466}
+  m_LocalPosition: {x: 0, y: 1.5, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -835,7 +835,7 @@ Camera:
     height: 0.5
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 90
+  field of view: 55
   orthographic: 0
   orthographic size: 10
   m_Depth: 0
@@ -1426,6 +1426,7 @@ GameObject:
   - component: {fileID: 5245102167042490463}
   - component: {fileID: 132095956406720221}
   - component: {fileID: 7918104366864484639}
+  - component: {fileID: 3756914571177815214}
   m_Layer: 0
   m_Name: 2_PlayerPrefab
   m_TagString: Player
@@ -1766,9 +1767,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ded5a5744d501b419c36cdef9a6e3b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  freeLookCamera: {fileID: 4498098532499965317}
-  sensibilidadeX: 85
-  sensibilidadeY: 0.7
 --- !u!114 &5245102167042490463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1814,6 +1812,25 @@ MonoBehaviour:
   energiaAtual: 0
   taxaRecuperacao: 10
   barraEnergia: {fileID: 6433926966447625364}
+--- !u!114 &3756914571177815214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7930835424021317259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc139d150cfc1a4f9f566eb35c6b45b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  freeLookCamera: {fileID: 4498098532499965317}
+  inputActions: {fileID: -944628639613478452, guid: 5c0a467bcac680c49abe8af4d022614e,
+    type: 3}
+  actionMapName: Gameplay
+  lookActionName: Look
+  sensibilidadeX: 85
+  sensibilidadeY: 2
 --- !u!1 &7943367485570984883
 GameObject:
   m_ObjectHideFlags: 0
@@ -1871,7 +1888,7 @@ MonoBehaviour:
   m_Follow: {fileID: 2601563233264719717}
   m_CommonLens: 1
   m_Lens:
-    FieldOfView: 40
+    FieldOfView: 55
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
