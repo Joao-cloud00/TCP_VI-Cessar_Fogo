@@ -14778,7 +14778,7 @@ MonoBehaviour:
   fullBurnTime: 11
   smolderTime: 4
   propagationRadius: 2
-  propagationChance: 0.5
+  propagationChance: 1
   propagationDelay: 3
   visualObject: {fileID: 2428195614101361263}
   smokeParticles: {fileID: 0}
