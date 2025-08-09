@@ -45,10 +45,10 @@ public class GameManager : MonoBehaviour
         player1.actions["Start"].performed += ctx => IniciarJogo();
         var startAction1 = player1.actions["Start"];
 
-        //var player2 = PlayerInput.Instantiate(player2Prefab, 1, controlScheme: null, pairWithDevice: Gamepad.all[1]);
-        //player2.transform.position = spawnPoint2.position;
-        //player2.actions["Start"].performed += ctx => IniciarJogo();
-        //var startAction2 = player2.actions["Start"];
+        var player2 = PlayerInput.Instantiate(player2Prefab, 1, controlScheme: null, pairWithDevice: Gamepad.all[1]);
+        player2.transform.position = spawnPoint2.position;
+        player2.actions["Start"].performed += ctx => IniciarJogo();
+        var startAction2 = player2.actions["Start"];
 
         Debug.Log($"Start action p1: {startAction1 != null}");
 
@@ -56,8 +56,7 @@ public class GameManager : MonoBehaviour
 
     private void IniciarJogo()
     {
-        Debug.Log(Time.timeScale);
-        if (Time.timeScale > 0) return; // Já começou
+        if (!telaIniciar) return; // Já começou
 
         telaIniciar.SetActive(false);
         Time.timeScale = 1;
