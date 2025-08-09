@@ -2285,6 +2285,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7930835424021317259, guid: d0cbe62275e173e4faa5ae85bf904db1,
         type: 3}
+    - target: {fileID: 6142559398077114832, guid: 1c0e02ab65a42e7449444455f3931043,
+        type: 3}
+      propertyPath: player2Prefab
+      value: 
+      objectReference: {fileID: 1518318418998500714, guid: 180b0c5785e56f74baa26ba74148274e,
+        type: 3}
     - target: {fileID: 7748768571691509773, guid: 1c0e02ab65a42e7449444455f3931043,
         type: 3}
       propertyPath: m_Name
@@ -26498,6 +26504,50 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2391a726725be9f409cf8a83f90c6a7c, type: 3}
+--- !u!1 &1058284135
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1058284137}
+  - component: {fileID: 1058284136}
+  m_Layer: 0
+  m_Name: SceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1058284136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058284135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0531f7df4f1bf943ac0fbed25f170ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1058284137
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058284135}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1075.2249, y: 626.58435, z: 664.52423}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1059218889
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54677,3 +54727,4 @@ SceneRoots:
   - {fileID: 433655930}
   - {fileID: 1320792986}
   - {fileID: 970883272}
+  - {fileID: 1058284137}

@@ -87,23 +87,24 @@ public class GameManager : MonoBehaviour
     // Chamada quando um jogador morre
     public void Derrota()
     {
-        if (jogoFinalizado) return;
+        SceneLoader.Instance.LoadScene(3);
+        //if (jogoFinalizado) return;
 
-        jogoFinalizado = true;
-        Debug.Log("Game Over!");
-        if (telaDerrota != null) telaDerrota.SetActive(true);
-        Time.timeScale = 0f;
+        //jogoFinalizado = true;
+        //Debug.Log("Game Over!");
+        //if (telaDerrota != null) telaDerrota.SetActive(true);
+        //Time.timeScale = 0f;
     }
 
     // Chamada quando todos os incêndios forem extintos
     public void Vitoria()
     {
-        if (jogoFinalizado) return;
-
-        jogoFinalizado = true;
-        Debug.Log("Vitória!");
-        if (telaVitoria != null) telaVitoria.SetActive(true);
-        Time.timeScale = 0f;
+        SceneLoader.Instance.LoadScene(2);
+        //if (jogoFinalizado) return;
+        //jogoFinalizado = true;
+        //Debug.Log("Vitória!");
+        //if (telaVitoria != null) telaVitoria.SetActive(true);
+        //Time.timeScale = 0f;
     }
 
     // Chamado no Start() de cada BaseFireCell

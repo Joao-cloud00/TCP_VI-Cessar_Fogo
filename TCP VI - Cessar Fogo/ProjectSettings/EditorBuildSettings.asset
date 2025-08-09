@@ -15,6 +15,15 @@ EditorBuildSettings:
     path: "Assets/Scenes/Apresenta\xE7\xE3o.unity"
     guid: 184aba2c855ae1246a85eaa71c6d6501
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 1e2507e1b817e284090375bd1ea26ea2
+  - enabled: 1
     path: Assets/Scenes/The Game.unity
     guid: f9301568a3910a44292229815431a2b0
+  - enabled: 1
+    path: "Assets/Scenes/Vit\xF3ria.unity"
+    guid: 652ace37e1ae1a84592e12a28c1adcd5
+  - enabled: 1
+    path: Assets/Scenes/Derrota.unity
+    guid: 4a7924996e2654a47a25cfc1592c3fb9
   m_configObjects: {}
