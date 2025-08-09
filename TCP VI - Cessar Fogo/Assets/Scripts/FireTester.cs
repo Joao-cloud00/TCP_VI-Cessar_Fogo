@@ -6,14 +6,6 @@ public class FireTester : MonoBehaviour
 {
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            BaseFireCell fire = GetComponent<BaseFireCell>();
-            if (fire != null)
-            {
-                fire.Ignite();
-            }
-        }
         if (Input.GetKeyDown(KeyCode.P))
         {
             BaseFireCell fire = GetComponent<BaseFireCell>();
@@ -23,5 +15,13 @@ public class FireTester : MonoBehaviour
             }
         }
 
+    }
+    public void Ignite()
+    {
+        BaseFireCell fire = GetComponent<BaseFireCell>();
+        if (fire != null)
+        {
+            fire.Ignite();
+        }
     }
 }

@@ -148,7 +148,7 @@ public class BaseFireCell : MonoBehaviour
     {
         GameManager.Instance?.RegistrarFoco();
         focoContabilizado = false;
-        Debug.Log($"{name} registrou foco no GameManager");
+        //Debug.Log($"{name} registrou foco no GameManager");
 
         if ((State == FireState.None || State == FireState.Suppressed) && combustivelAtual > 0f)
         {

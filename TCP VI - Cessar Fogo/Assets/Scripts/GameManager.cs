@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
 
     private int totalFocos = 0;
     private int focosExtintos = 0;
+    [SerializeField]
+    private float chanceDeAcender = 0.5f;
 
     private void Awake()
     {
@@ -40,24 +42,47 @@ public class GameManager : MonoBehaviour
 
         var player1 = PlayerInput.Instantiate(player1Prefab, 0, controlScheme: null, pairWithDevice: Gamepad.all[0]);
         player1.transform.position = spawnPoint1.position;
+        player1.actions["Start"].performed += ctx => IniciarJogo();
+        var startAction1 = player1.actions["Start"];
 
-        Debug.Log($"Player 1: index = {player1.playerIndex}, controle = {player1.devices[0].displayName}");
+        //var player2 = PlayerInput.Instantiate(player2Prefab, 1, controlScheme: null, pairWithDevice: Gamepad.all[1]);
+        //player2.transform.position = spawnPoint2.position;
+        //player2.actions["Start"].performed += ctx => IniciarJogo();
+        //var startAction2 = player2.actions["Start"];
 
-        var player2 = PlayerInput.Instantiate(player2Prefab, 1, controlScheme: null, pairWithDevice: Gamepad.all[1]);
-        player2.transform.position = spawnPoint2.position;
+        Debug.Log($"Start action p1: {startAction1 != null}");
 
-        Debug.Log($"Player 2: index = {player2.playerIndex}, controle = {player2.devices[0].displayName}");
-
-        //Time.timeScale = 0;
     }
+
+    private void IniciarJogo()
+    {
+        Debug.Log(Time.timeScale);
+        if (Time.timeScale > 0) return; // Já começou
+
+        telaIniciar.SetActive(false);
+        Time.timeScale = 1;
+
+        // Pega todos os fogos na cena
+        FireTester[] fires = FindObjectsOfType<FireTester>(false);
+        Debug.Log(fires.Length);
+
+        foreach (var fire in fires)
+        {
+            if (Random.value <= chanceDeAcender)
+            {
+                fire.Ignite();
+            }
+        }
+    }
+
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            telaIniciar.SetActive(false);
-            Time.timeScale = 1;
-        }
+        //    if (Input.GetKeyDown(KeyCode.I))
+        //    {
+        //        telaIniciar.SetActive(false);
+        //        Time.timeScale = 1;
+        //    }
     }
 
     // Chamada quando um jogador morre

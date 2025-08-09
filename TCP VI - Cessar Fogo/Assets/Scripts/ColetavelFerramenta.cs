@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class ColetavelFerramenta : MonoBehaviour
 {
-    [SerializeField] private GameObject ferramentaPrefab;
+    //[SerializeField] private GameObject ferramentaPrefab;
+    //fazer com que o ferramenta Prefab seja selecionado no canvas
+    JogadorFerramentas jogador;
 
-    private void OnTriggerEnter(Collider other)
+    private void Start()
     {
-        JogadorFerramentas jogador = other.GetComponent<JogadorFerramentas>();
-        if (jogador != null)
+        jogador = GetComponentInParent<JogadorFerramentas>();
+    }
+
+    
+    public void EquiparFerramenta(GameObject ferramenta)
+    {
+        Debug.Log(ferramenta.name);
+        jogador.EquiparNovaFerramenta(ferramenta);
+        ColetavelFerramenta canvasHUD = GetComponentInChildren<ColetavelFerramenta>(true);
+
+        if (canvasHUD != null)
         {
-            jogador.EquiparNovaFerramenta(ferramentaPrefab);
-            //Destroy(gameObject); // Remove a ferramenta do cenário após pegar
+            canvasHUD.gameObject.SetActive(false);
+
+            GetComponentInParent<PlayerMovement>().SetControleAtivo(true);
         }
     }
 }

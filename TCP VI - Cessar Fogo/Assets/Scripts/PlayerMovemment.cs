@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
     private JogadorEnergia energia;
     Animator animator;
 
-    private bool controleAtivo = true;
+    public bool controleAtivo = true;
 
     public void SetControleAtivo(bool ativo)
     {
@@ -140,6 +140,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!controleAtivo) { moveInput = Vector2.zero; isWalking = false; animator.SetBool("Andando", isWalking); return; }
         CheckGround();
 
 

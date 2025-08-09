@@ -12,18 +12,18 @@ public class JogadorFerramentas : MonoBehaviour
     private JogadorEnergia energia;
     private bool controleAtivo = true;
 
-    public void SetControleAtivo(bool ativo)
-    {
-        controleAtivo = ativo;
-    }
+
 
     private void Awake()
     {
         energia = GetComponent<JogadorEnergia>();
+        controleAtivo= GetComponent<PlayerMovement>().controleAtivo;
     }
 
     public void OnUseTool(InputAction.CallbackContext context)
     {
+
+        controleAtivo = GetComponent<PlayerMovement>().controleAtivo;
         if (!controleAtivo) return;
 
         if (energia.TemEnergia(custoFerramenta))
@@ -31,22 +31,27 @@ public class JogadorFerramentas : MonoBehaviour
             if (ferramentaAtual == null) return;
 
             IFerramenta ferramenta = ferramentaAtual.GetComponent<IFerramenta>();
-            if (ferramenta == null)  return;
+            if (ferramenta == null) return;
 
-
-            if (context.started)
+            if (ferramenta is MochilaAgua mochila)
+            {
+                if (context.started)
+                {
+                    ferramenta.Usar();
+                    energia.ConsumirEnergia(custoFerramenta);
+                }
+                else if (context.canceled)
+                {
+                    mochila.PararUso();
+                }
+                return;
+            }
+            else if (context.performed)
             {
                 ferramenta.Usar();
                 energia.ConsumirEnergia(custoFerramenta);
             }
-            else if (context.canceled)
-            {
-                // Só chama PararUso se a ferramenta implementar esse método
-                if (ferramenta is MochilaAgua mochila)
-                {
-                    mochila.PararUso();
-                }
-            }
+
         }
     }
 
