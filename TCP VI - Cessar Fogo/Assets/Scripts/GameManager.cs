@@ -40,13 +40,26 @@ public class GameManager : MonoBehaviour
 
         PlayerInputManager.instance.DisableJoining();
 
+        
         var player1 = PlayerInput.Instantiate(player1Prefab, 0, controlScheme: null, pairWithDevice: Gamepad.all[0]);
         player1.transform.position = spawnPoint1.position;
+        var setup1 = player1.GetComponent<PlayerCameraSetup>();
+        if (setup1 != null)
+        {
+            setup1.followTarget = player1.transform; // ou um "CameraRig" do Player 1
+        }
         player1.actions["Start"].performed += ctx => IniciarJogo();
         var startAction1 = player1.actions["Start"];
 
+
+
         var player2 = PlayerInput.Instantiate(player2Prefab, 1, controlScheme: null, pairWithDevice: Gamepad.all[1]);
         player2.transform.position = spawnPoint2.position;
+        var setup2 = player2.GetComponent<PlayerCameraSetup>();
+        if (setup2 != null)
+        {
+            setup2.followTarget = player2.transform; // ou um "CameraRig" do Player 2
+        }
         player2.actions["Start"].performed += ctx => IniciarJogo();
         var startAction2 = player2.actions["Start"];
 

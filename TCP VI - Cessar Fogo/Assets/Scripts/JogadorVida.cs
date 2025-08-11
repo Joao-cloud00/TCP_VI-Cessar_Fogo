@@ -94,13 +94,24 @@ public class JogadorVida : MonoBehaviour
 
     private void Morrer()
     {
+        PlayerMovement playerMovement = GetComponent<PlayerMovement>();
+        playerMovement.SetControleAtivo(false);
         Debug.Log($"{name} morreu!");
         //vidaAtual = 0;
         AtualizarBarraVida();
-        animator.SetTrigger("Morreu");
-        GameManager.Instance.Derrota();
+        animator.SetBool("Morreu",true); 
+        StartCoroutine(GameOver());
 
         // adicionar aqui o que acontecer quando morrer (respawn, game over, etc.)
     }
+
+    private IEnumerator GameOver()
+    {
+
+        yield return new WaitForSeconds(5);
+        GameManager.Instance.Derrota();
+        
+    }
+
 }
 

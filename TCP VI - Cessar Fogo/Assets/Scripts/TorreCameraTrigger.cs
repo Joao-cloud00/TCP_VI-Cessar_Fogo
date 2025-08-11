@@ -14,7 +14,7 @@ public class TorreCameraTrigger : MonoBehaviour
             var controle = other.GetComponent<PlayerMovement>();
             if (controle != null)
             {
-                controle.torreCamera = torreCamera;
+                //controle.torreCamera = torreCamera;
                 controle.estaProximoDaTorre = true;
             }
         }

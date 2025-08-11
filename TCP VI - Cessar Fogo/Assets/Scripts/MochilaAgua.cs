@@ -30,10 +30,16 @@ public class MochilaAgua : MonoBehaviour, IFerramenta
         anim.SetTrigger("Usou");
 
         anim.SetInteger("Item", item);
+        if (item == 1)
+        {
+            anim.SetBool("Molhando", true);
+        }
     }
 
     public void PararUso()
     {
+
+        anim.SetBool("Molhando", false);
         usando = false;
         if (jatoDeAgua != null && jatoDeAgua.isPlaying)
         {

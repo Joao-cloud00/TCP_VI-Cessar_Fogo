@@ -22,9 +22,6 @@ public class PlayerMovement : MonoBehaviour
     [Header("Referências")]
     [SerializeField] private Transform cameraTransform; // arraste a câmera real do jogador aqui
 
-    public TorreCameraController torreCamera; // arraste no Inspector
-    public TorreCameraController torreController;
-
     public bool estaProximoDaTorre = false;
 
     private Vector2 moveInput;
@@ -104,38 +101,38 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    public void OnMoverCameraTorre(InputAction.CallbackContext context)
-    {
-        if (torreController != null && torreController.EstaAtiva())
-        {
-            torreController.ReceberInput(context.ReadValue<Vector2>());
-        }
-    }
+    //public void OnMoverCameraTorre(InputAction.CallbackContext context)
+    //{
+    //    if (torreController != null && torreController.EstaAtiva())
+    //    {
+    //        torreController.ReceberInput(context.ReadValue<Vector2>());
+    //    }
+    //}
 
 
-    public void OnToggleTorreCamera(InputAction.CallbackContext context)
-    {
+    //public void OnToggleTorreCamera(InputAction.CallbackContext context)
+    //{
 
-        if (!context.performed) return;
+    //    if (!context.performed) return;
 
-        //Debug.Log("Botão Triângulo pressionado");
+    //    //Debug.Log("Botão Triângulo pressionado");
 
-        if (estaProximoDaTorre)
-        {
-            //Debug.Log("Está próximo da torre, alternando câmera");
-            if (torreCamera.EstaAtiva())
-            {
-                torreCamera.DesativarCamera();
-                SetControleAtivo(true);
-                //Debug.Log("Usando camera");
-            }
-            else
-            {
-                torreCamera.AtivarCamera();
-                SetControleAtivo(false);
-            }
-        }
-    }
+    //    if (estaProximoDaTorre)
+    //    {
+    //        //Debug.Log("Está próximo da torre, alternando câmera");
+    //        if (torreCamera.EstaAtiva())
+    //        {
+    //            torreCamera.DesativarCamera();
+    //            SetControleAtivo(true);
+    //            //Debug.Log("Usando camera");
+    //        }
+    //        else
+    //        {
+    //            torreCamera.AtivarCamera();
+    //            SetControleAtivo(false);
+    //        }
+    //    }
+    //}
 
 
     private void FixedUpdate()
