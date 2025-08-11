@@ -11,6 +11,8 @@ public class ColetavelFerramenta : MonoBehaviour
     [SerializeField]
     GameObject FerramentasCanva;
     [SerializeField]
+    GameObject MissaoCanva;
+    [SerializeField]
     GameObject[] FerramentasImagem;
 
     private void Start()
@@ -37,6 +39,7 @@ public class ColetavelFerramenta : MonoBehaviour
     {
 
         FerramentasCanva.SetActive(true);
+        MissaoCanva.SetActive(false);
         for (int i = 0; FerramentasImagem.Length > i; i++)
         {
             FerramentasImagem[i].SetActive(false);
