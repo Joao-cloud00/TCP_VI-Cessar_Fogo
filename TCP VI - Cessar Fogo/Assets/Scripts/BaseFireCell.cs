@@ -12,10 +12,10 @@ public class BaseFireCell : MonoBehaviour
     public FireState State { get; protected set; } = FireState.None;
 
     [Header("Fases do Fogo")]
-    [SerializeField] protected float ignitionTime = 3f;
-    [SerializeField] protected float growTime = 5f;
-    [SerializeField] protected float fullBurnTime = 8f;
-    [SerializeField] protected float smolderTime = 4f;
+    [SerializeField] protected float ignitionTime = 20f;
+    [SerializeField] protected float growTime = 40f;
+    [SerializeField] protected float fullBurnTime = 40f;
+    [SerializeField] protected float smolderTime = 10f;
 
     protected float timer = 0f;
     protected bool hasPropagated = false;
@@ -32,7 +32,7 @@ public class BaseFireCell : MonoBehaviour
     [SerializeField] private ParticleSystem smokeParticles;
 
     [Header("Combustível")]
-    [SerializeField] protected float combustivelMaximo = 100f;
+    [SerializeField] protected float combustivelMaximo = 500f;
     protected float combustivelAtual;
 
     [Header("Area de Dano")]
@@ -101,26 +101,20 @@ public class BaseFireCell : MonoBehaviour
         {
             case FireState.Ignition:
                 combustivelAtual -= Time.deltaTime * 2f; // consumo de combustivel
-                if (combustivelAtual <= 0f)
-                    ChangeState(FireState.Extinguished);
-                else if (timer >= ignitionTime)
+                if (timer >= ignitionTime)
                     ChangeState(FireState.Growing);
                 break;
 
 
             case FireState.Growing:
                 combustivelAtual -= Time.deltaTime * 3f;
-                if (combustivelAtual <= 0f)
-                    ChangeState(FireState.Extinguished);
-                else if (timer >= growTime)
+                if (timer >= growTime)
                     ChangeState(FireState.FullBurn);
                 break;
 
             case FireState.FullBurn:
                 combustivelAtual -= Time.deltaTime * 5f;
-                if (combustivelAtual <= 0f)
-                    ChangeState(FireState.Extinguished);
-                else if (!hasPropagated && timer >= propagationDelay)
+                if (!hasPropagated && timer >= propagationDelay)
                 {
                     TryPropagate();
                     hasPropagated = true;
@@ -131,9 +125,7 @@ public class BaseFireCell : MonoBehaviour
 
             case FireState.Smoldering:
                 combustivelAtual -= Time.deltaTime * 2f;
-                if (combustivelAtual <= 0f)
-                    ChangeState(FireState.Extinguished);
-                else if (timer >= smolderTime)               
+                if (timer >= smolderTime)               
                     ChangeState(FireState.Extinguished);
                 combustivelAtual = 0f;
                 break;
@@ -143,6 +135,7 @@ public class BaseFireCell : MonoBehaviour
         if (combustivelAtual <= 0f && State != FireState.Extinguished)
         {
             ChangeState(FireState.Extinguished);
+            Queimado();
         }
 
         //Debug.Log($"{gameObject.name} mudou para estado {State}. Collider de dano ativo? {areaDano.enabled}");
@@ -245,7 +238,6 @@ public class BaseFireCell : MonoBehaviour
 
                 case FireState.Extinguished:
                     smokeParticles.Stop();
-
                     break;
 
                 default:
@@ -272,7 +264,7 @@ public class BaseFireCell : MonoBehaviour
                     break;
                 case FireState.Extinguished:
                     rend.material.color = Color.black;
-                    Queimado();
+                    
                     break;
                 default:
                     rend.material.color = Color.green;
@@ -313,7 +305,7 @@ public class BaseFireCell : MonoBehaviour
         if (State == FireState.Extinguished || combustivelAtual <= 0f)
             return;
 
-        combustivelAtual -= quantidade;
+        //combustivelAtual -= quantidade;
 
         if (combustivelAtual <= 0f)
         {
