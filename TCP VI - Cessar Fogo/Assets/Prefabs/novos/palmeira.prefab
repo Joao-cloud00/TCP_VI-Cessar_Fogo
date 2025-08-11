@@ -14890,6 +14890,10 @@ MonoBehaviour:
   propagationChance: 1
   propagationDelay: 3
   visualObject: {fileID: 5305955542784699662}
+  partesDaArvore:
+  - {fileID: 8854971903644472648}
+  materialQueimado:
+  - {r: 0, g: 0, b: 0, a: 1}
   smokeParticles: {fileID: 0}
   combustivelMaximo: 100
   areaDano: {fileID: 6434023231273745771}

@@ -28140,6 +28140,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3238389650819645641, guid: 4b8c6aa3e6c82bf40adc02ed2199e322,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.m_ColorSpace
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 8854971903644472648, guid: 4b8c6aa3e6c82bf40adc02ed2199e322,
         type: 3}
       propertyPath: m_Name

@@ -53,15 +53,15 @@ public class GameManager : MonoBehaviour
 
 
 
-        var player2 = PlayerInput.Instantiate(player2Prefab, 1, controlScheme: null, pairWithDevice: Gamepad.all[1]);
-        player2.transform.position = spawnPoint2.position;
-        var setup2 = player2.GetComponent<PlayerCameraSetup>();
-        if (setup2 != null)
-        {
-            setup2.followTarget = player2.transform; // ou um "CameraRig" do Player 2
-        }
-        player2.actions["Start"].performed += ctx => IniciarJogo();
-        var startAction2 = player2.actions["Start"];
+        //var player2 = PlayerInput.Instantiate(player2Prefab, 1, controlScheme: null, pairWithDevice: Gamepad.all[1]);
+        //player2.transform.position = spawnPoint2.position;
+        //var setup2 = player2.GetComponent<PlayerCameraSetup>();
+        //if (setup2 != null)
+        //{
+        //    setup2.followTarget = player2.transform; // ou um "CameraRig" do Player 2
+        //}
+        //player2.actions["Start"].performed += ctx => IniciarJogo();
+        //var startAction2 = player2.actions["Start"];
 
         Debug.Log($"Start action p1: {startAction1 != null}");
 

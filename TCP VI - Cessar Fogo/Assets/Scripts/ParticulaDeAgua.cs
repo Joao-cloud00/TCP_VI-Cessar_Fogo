@@ -12,6 +12,8 @@ public class ParticulaDeAgua : MonoBehaviour
         if (fogo != null)
         {
             fogo.Resfriar(intensidadeResfriamento * Time.deltaTime);
+            Debug.Log(fogo.GetCombustivel());
+
         }
     }
 }

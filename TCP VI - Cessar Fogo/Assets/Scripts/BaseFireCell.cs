@@ -27,6 +27,8 @@ public class BaseFireCell : MonoBehaviour
 
     [Header("Visual")]
     [SerializeField] private GameObject visualObject;
+    [SerializeField] private GameObject[] partesDaArvore;
+    [SerializeField] private Color[] materialQueimado;
     [SerializeField] private ParticleSystem smokeParticles;
 
     [Header("Combustível")]
@@ -48,8 +50,8 @@ public class BaseFireCell : MonoBehaviour
 
     protected virtual void Start()
     {
-        //GameManager.Instance?.RegistrarFoco();
-
+        GameManager.Instance?.RegistrarFoco();
+        materialQueimado[0] = Color.black;
         combustivelAtual = combustivelMaximo;
         fireParticles = GetComponentInChildren<ParticleSystem>();
         if (visualObject != null)
@@ -61,12 +63,15 @@ public class BaseFireCell : MonoBehaviour
             smokeParticles.Stop();
 
     }
+    public float GetCombustivel()
+    {
+        return combustivelAtual;
+    }
 
     protected virtual void Update()
     {
         if (!focoContabilizado && (State == FireState.Suppressed || State == FireState.Extinguished))
         {
-            Debug.Log("Foco extinto");
             GameManager.Instance?.FocoExtinto();
             focoContabilizado = true;
         }
@@ -240,6 +245,7 @@ public class BaseFireCell : MonoBehaviour
 
                 case FireState.Extinguished:
                     smokeParticles.Stop();
+
                     break;
 
                 default:
@@ -266,6 +272,7 @@ public class BaseFireCell : MonoBehaviour
                     break;
                 case FireState.Extinguished:
                     rend.material.color = Color.black;
+                    Queimado();
                     break;
                 default:
                     rend.material.color = Color.green;
@@ -273,7 +280,15 @@ public class BaseFireCell : MonoBehaviour
             }
         }
     }
+    void Queimado()
+    {
 
+        for (int i = 0; partesDaArvore.Length > i; i++) 
+        {
+            partesDaArvore[i].GetComponent<Renderer>().material.color = materialQueimado[i];
+        }
+
+    }
     void OnDrawGizmosSelected()
     {
         if (State != FireState.None && State != FireState.Extinguished)
@@ -305,10 +320,12 @@ public class BaseFireCell : MonoBehaviour
             ChangeState(FireState.Extinguished); // fogo acaba naturalmente
             return;
         }
+        Debug.Log(gameObject.name + State);
 
         // Se está pegando fogo, pode ser apagado antes do fim
         if (State != FireState.None && State != FireState.Suppressed)
         {
+            Debug.Log("apagou");
             ChangeState(FireState.Suppressed); // volta ao estado original, mas ainda com combustível restante
             hasPropagated = false; // permite que propague novamente no futuro
         }

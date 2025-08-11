@@ -12,6 +12,7 @@ public class JatoArea : MonoBehaviour
         if (fogo != null)
         {
             fogo.Resfriar(intensidadeResfriamento * Time.deltaTime);
+            Debug.Log(fogo.GetCombustivel());
         }
     }
 }

@@ -63,6 +63,21 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5504576028003537843, guid: eacc6622cd8d57345a35dbef5fc3313b,
+        type: 3}
+      propertyPath: partesDaArvore.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5504576028003537843, guid: eacc6622cd8d57345a35dbef5fc3313b,
+        type: 3}
+      propertyPath: materialQueimado.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5504576028003537843, guid: eacc6622cd8d57345a35dbef5fc3313b,
+        type: 3}
+      propertyPath: partesDaArvore.Array.data[0]
+      value: 
+      objectReference: {fileID: 673070081945724995}
     - target: {fileID: 5947812124600773938, guid: eacc6622cd8d57345a35dbef5fc3313b,
         type: 3}
       propertyPath: m_Name
@@ -156,6 +171,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ea9ffcaf7b8b114e803ef256194e548, type: 3}
+--- !u!1 &673070081945724995 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6395214900053779535, guid: 4ea9ffcaf7b8b114e803ef256194e548,
+    type: 3}
+  m_PrefabInstance: {fileID: 5879281900483038220}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5524831721243242477 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2106350439656039393, guid: 4ea9ffcaf7b8b114e803ef256194e548,

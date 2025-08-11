@@ -14890,6 +14890,12 @@ MonoBehaviour:
   propagationChance: 1
   propagationDelay: 3
   visualObject: {fileID: 5305955542784699662}
+  partesDaArvore:
+  - {fileID: 5742986908430591479}
+  - {fileID: 7885064144003590131}
+  materialQueimado:
+  - {r: 0, g: 0, b: 0, a: 1}
+  - {r: 0, g: 0, b: 0, a: 0}
   smokeParticles: {fileID: 0}
   combustivelMaximo: 100
   areaDano: {fileID: 6434023231273745771}
@@ -14990,9 +14996,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4501630265d1d23468c07f953284c3c7, type: 3}
+--- !u!1 &5742986908430591479 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7622500058972066862, guid: 4501630265d1d23468c07f953284c3c7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2773020279756419545}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7811441534868551966 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5340266338835728583, guid: 4501630265d1d23468c07f953284c3c7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2773020279756419545}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7885064144003590131 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5410757534863922730, guid: 4501630265d1d23468c07f953284c3c7,
     type: 3}
   m_PrefabInstance: {fileID: 2773020279756419545}
   m_PrefabAsset: {fileID: 0}
