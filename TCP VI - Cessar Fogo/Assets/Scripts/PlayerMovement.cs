@@ -19,6 +19,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float groundCheckRadius = 0.3f;
     [SerializeField] private LayerMask groundMask;
 
+    [Header("Audio")]
+
+
     [Header("Referências")]
     [SerializeField] private Transform cameraTransform; // arraste a câmera real do jogador aqui
 
@@ -26,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 moveInput;
     private Rigidbody rb;
-
+    private PlayerAudio PlayerAudio;
     private bool isRunning = false;
     private bool isWalking = false;
     private bool isGrounded = false;
@@ -39,14 +42,12 @@ public class PlayerMovement : MonoBehaviour
 
     public bool controleAtivo = true;
 
-    public void SetControleAtivo(bool ativo)
-    {
-        controleAtivo = ativo;
-    }
+  
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        PlayerAudio = GetComponent<PlayerAudio>();
         energia = GetComponent<JogadorEnergia>();
         animator = GetComponent<Animator>();
 
@@ -62,6 +63,70 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+
+    private void FixedUpdate()
+    {
+        if (!controleAtivo) { moveInput = Vector2.zero; isWalking = false; animator.SetBool("Andando", isWalking); return; }
+        CheckGround();
+
+
+        SFXManager();
+        animator.SetBool("Andando", isWalking);
+
+
+        if (moveInput.sqrMagnitude > 0.01f)
+        {
+
+            float speed = moveSpeed * (isRunning ? runMultiplier : 1f);
+            //Debug.Log($"velocidade atual: {speed} ");
+
+            Vector3 inputDirection = new Vector3(moveInput.x, 0f, moveInput.y);
+            Vector3 worldDirection = cameraTransform.TransformDirection(inputDirection);
+            worldDirection.y = 0f;
+
+            Vector3 movement = worldDirection.normalized * speed * Time.fixedDeltaTime;
+            rb.MovePosition(rb.position + movement);
+
+            isWalking = true;
+
+            // Rotaciona o jogador na direção do movimento
+            if (worldDirection.sqrMagnitude > 0.01f)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(worldDirection);
+                rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime));
+            }
+        }
+        else { isWalking = false; }
+    }
+    private void SFXManager()
+    {
+        //andar
+
+        if (animator.GetBool("Andando") && !animator.GetBool("Correndo"))
+        {
+            PlayerAudio.playSFX(PlayerAudio.andarCOD);
+        }
+        else
+        {
+            PlayerAudio.stopSFX(PlayerAudio.andarCOD);
+        }
+
+        if (animator.GetBool("Andando") && animator.GetBool("Correndo"))
+        {
+            PlayerAudio.playSFX(PlayerAudio.correrCOD);
+        }
+        else
+        {
+            PlayerAudio.stopSFX(PlayerAudio.correrCOD);
+
+        }
+    }
+    public void SetControleAtivo(bool ativo)
+    {
+        controleAtivo = ativo;
+    }
+
+    
     public void OnMove(InputAction.CallbackContext context)
     {
         if (!controleAtivo) return;
@@ -79,6 +144,7 @@ public class PlayerMovement : MonoBehaviour
 
             isRunning = context.ReadValueAsButton();
             animator.SetBool("Correndo", isRunning);
+            
             energia.ConsumirEnergia(custoCorrida);
         }
 
@@ -91,12 +157,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (context.performed && isGrounded && energia.TemEnergia(custoPulo))
         {
-
+            PlayerAudio.playSFX(PlayerAudio.pularCOD);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             energia.ConsumirEnergia(custoPulo);
             animator.SetTrigger("Pulou");
         }
-
     }
 
 
@@ -135,40 +200,7 @@ public class PlayerMovement : MonoBehaviour
     //}
 
 
-    private void FixedUpdate()
-    {
-        if (!controleAtivo) { moveInput = Vector2.zero; isWalking = false; animator.SetBool("Andando", isWalking); return; }
-        CheckGround();
-
-
-
-        animator.SetBool("Andando", isWalking);
-
-
-        if (moveInput.sqrMagnitude > 0.01f)
-        {
-
-            float speed = moveSpeed * (isRunning ? runMultiplier : 1f);
-            //Debug.Log($"velocidade atual: {speed} ");
-
-            Vector3 inputDirection = new Vector3(moveInput.x, 0f, moveInput.y);
-            Vector3 worldDirection = cameraTransform.TransformDirection(inputDirection);
-            worldDirection.y = 0f;
-
-            Vector3 movement = worldDirection.normalized * speed * Time.fixedDeltaTime;
-            rb.MovePosition(rb.position + movement);
-
-            isWalking = true;
-
-            // Rotaciona o jogador na direção do movimento
-            if (worldDirection.sqrMagnitude > 0.01f)
-            {
-                Quaternion targetRotation = Quaternion.LookRotation(worldDirection);
-                rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime));
-            }
-        }
-        else { isWalking = false; }
-    }
+    
 
     private void CheckGround()
     {

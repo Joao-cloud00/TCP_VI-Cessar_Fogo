@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float chanceDeAcender = 0.5f;
 
+    bool teste = true;
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -69,8 +70,9 @@ public class GameManager : MonoBehaviour
 
     private void IniciarJogo()
     {
-        if (!telaIniciar) return; // Já começou
+        if (!teste) return; // Já começou
 
+        teste = false;
         telaIniciar.SetActive(false);
         Time.timeScale = 1;
 

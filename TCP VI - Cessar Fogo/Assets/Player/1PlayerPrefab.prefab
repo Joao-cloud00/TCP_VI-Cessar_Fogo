@@ -121,7 +121,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703555225374169693}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.004985987, y: 0.00000001720197, z: 8.576987e-11, w: 0.9999876}
+  m_LocalRotation: {x: -0.004985988, y: -0.000000017220867, z: -8.586412e-11, w: 0.9999876}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1013,7 +1013,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2003068923804779373}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.013204093, y: 0.000000017221678, z: -2.2741652e-10, w: 0.99991286}
+  m_LocalRotation: {x: 0.013204114, y: -0.00000001719648, z: 2.2708412e-10, w: 0.99991286}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2115,7 +2115,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3140811116476141908}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0049859853, y: 0.000000034410235, z: 1.7157105e-10, w: 0.9999876}
+  m_LocalRotation: {x: -0.0049859853, y: -0.00000003443228, z: -1.7168095e-10, w: 0.9999876}
   m_LocalPosition: {x: 0, y: 1.5, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4640,6 +4640,8 @@ GameObject:
   - component: {fileID: 5932308132348345359}
   - component: {fileID: 5546653876980180246}
   - component: {fileID: 464109981444044305}
+  - component: {fileID: 632803134005665476}
+  - component: {fileID: 4757013727427688291}
   m_Layer: 0
   m_Name: 1PlayerPrefab
   m_TagString: Player
@@ -5147,13 +5149,39 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7930835424021317259}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e3330e2b8e2bd2428e50719f896b8eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   freeLookCam: {fileID: 4498098532499965317}
   followTarget: {fileID: 2601563233264719717}
+--- !u!114 &632803134005665476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7930835424021317259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93abf597e28dc7f4ab64eb84e4492213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pularCOD: 0
+  andarCOD: 1
+  correrCOD: 2
+  hurtCOD: 3
+  morrerCOD: 4
+  usarCOD: 5
+--- !u!81 &4757013727427688291
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7930835424021317259}
+  m_Enabled: 1
 --- !u!1 &7943367485570984883
 GameObject:
   m_ObjectHideFlags: 0
