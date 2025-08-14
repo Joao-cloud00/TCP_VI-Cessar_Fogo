@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PlayerAudio : MonoBehaviour
 {
-    [SerializeField] public int pularCOD;
     [SerializeField] public int andarCOD;
     [SerializeField] public int correrCOD;
-    [SerializeField] public int hurtCOD;
-    [SerializeField] public int morrerCOD;
-    [SerializeField] public int usarCOD;
+    [SerializeField] public int pularCOD;
+    [SerializeField] public int mochilaInicioCOD;
+    [SerializeField] public int mochilaMeioCOD;
+    [SerializeField] public int mochilaFimCOD;
+    [SerializeField] public int enchadaCOD;
 
     public void playSFX(int sfxCOD)
     {

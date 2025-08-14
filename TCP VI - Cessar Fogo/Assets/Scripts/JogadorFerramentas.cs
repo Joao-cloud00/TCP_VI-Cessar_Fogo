@@ -7,16 +7,18 @@ public class JogadorFerramentas : MonoBehaviour
 {
     [SerializeField] private GameObject ferramentaAtual;
     public Transform pontoFerramenta;
-
+    PlayerAudio playerAudio;
     [SerializeField] private float custoFerramenta = 99f;
     private JogadorEnergia energia;
     private bool controleAtivo = true;
+    private bool tocou;
 
 
 
     private void Awake()
     {
         energia = GetComponent<JogadorEnergia>();
+        playerAudio = GetComponent<PlayerAudio>();
         controleAtivo= GetComponent<PlayerMovement>().controleAtivo;
     }
 
@@ -35,13 +37,26 @@ public class JogadorFerramentas : MonoBehaviour
 
             if (ferramenta is MochilaAgua mochila)
             {
+
                 if (context.started)
                 {
                     ferramenta.Usar();
                     energia.ConsumirEnergia(custoFerramenta);
-                }
-                else if (context.canceled)
+
+
+                    playerAudio.playSFX(playerAudio.mochilaInicioCOD);
+                    playerAudio.playSFX(playerAudio.mochilaMeioCOD);
+
+                    return;
+
+
+
+                }else if (context.canceled)
                 {
+                    playerAudio.playSFX(playerAudio.mochilaFimCOD);
+                    playerAudio.stopSFX(playerAudio.mochilaInicioCOD);
+                    playerAudio.stopSFX(playerAudio.mochilaMeioCOD);
+
                     mochila.PararUso();
                 }
                 return;
@@ -54,7 +69,11 @@ public class JogadorFerramentas : MonoBehaviour
 
         }
     }
-
+    public void tocarSomAnimacao(int COD)
+    {
+        playerAudio.stopAll();
+        playerAudio.playSFX(playerAudio.enchadaCOD);
+    }
     public void EquiparNovaFerramenta(GameObject novaFerramentaPrefab)
     {
         if (ferramentaAtual != null)

@@ -41,7 +41,8 @@ public class BaseFireCell : MonoBehaviour
     protected float mult = 1;
     private bool focoContabilizado = false;
 
-
+    AudioSource audioSource;
+    
 
 
 
@@ -61,6 +62,7 @@ public class BaseFireCell : MonoBehaviour
         UpdateVisuals();
         if (smokeParticles != null)
             smokeParticles.Stop();
+       audioSource = gameObject.GetComponent<AudioSource>();
 
     }
     public float GetCombustivel()
@@ -146,10 +148,12 @@ public class BaseFireCell : MonoBehaviour
     {
         GameManager.Instance?.RegistrarFoco();
         focoContabilizado = false;
-        //Debug.Log($"{name} registrou foco no GameManager");
 
+        //Debug.Log($"{name} registrou foco no GameManager");
+      
         if ((State == FireState.None || State == FireState.Suppressed) && combustivelAtual > 0f)
         {
+            audioSource.Play();
             ChangeState(FireState.Ignition);
         }
     }
@@ -159,6 +163,7 @@ public class BaseFireCell : MonoBehaviour
         if (State != FireState.Extinguished && State != FireState.None && combustivelAtual >0f)
         {
             ChangeState(FireState.Suppressed);
+            audioSource.Stop();
         }
     }
 

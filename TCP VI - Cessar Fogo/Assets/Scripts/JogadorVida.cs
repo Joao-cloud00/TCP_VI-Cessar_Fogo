@@ -82,7 +82,6 @@ public class JogadorVida : MonoBehaviour
         if (telaDano != null)
         {
 
-            PlayerAudio.playSFX(PlayerAudio.hurtCOD);
             telaDano.color = new Color(1, 0, 0, 0.6f);
             yield return new WaitForSeconds(tempoFeedback);
             telaDano.color = new Color(1, 0, 0, 0f);
@@ -107,7 +106,6 @@ public class JogadorVida : MonoBehaviour
         AtualizarBarraVida();
         animator.SetBool("Morreu",true);
         PlayerAudio.stopAll();
-        PlayerAudio.playSFX(PlayerAudio.morrerCOD);
         StartCoroutine(GameOver());
 
         // adicionar aqui o que acontecer quando morrer (respawn, game over, etc.)
